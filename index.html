@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru"><head>
+    <meta content="charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./files/style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="files/logo_voenmeh.ico">
+    <link href="./files/bootstrap.min.css" rel="stylesheet">
+    <title>ITVoenmeh</title>
+</head>
+<body>
+    <header>
+        <a href="http://voenmeh.ru/" target="_blank">
+            <img src="./files/voenmeh.svg" alt="Voenmeh" id="Voenmeh-logo">
+        </a>
+        <div id="homework-list">
+            <span class="homework">Домашнее 1</span>
+            <span class="homework">Домашнее 2</span>
+            <span class="homework">Домашнее 3</span>
+        </div>
+    </header>
+<!-- Кнопка для активации выпадающего списка -->
+<button class="btn btn-primary" id="hw1" data-bs-toggle="collapse" data-bs-target="#collapse-1" aria-expanded="true">ДЗ1</button>
+
+<!-- Выпадающий список -->
+<div class="collapse show" id="collapse-1">
+    <div class="block">
+        <div class="task">
+            <h2><div class="arrow">HTML CSS</div></h2>
+            <ul>
+                <li class="success"><div class="html">HTML</div>Добавить внутрь всех h2 следующий код: &lt;div class="arrow"&gt;&lt;/div&gt;</li>
+                <li class="success"><div class="css">CSS</div>Задать цвет хедера</li>
+                <li class="success"><div class="css">CSS</div>Задать цвет рабочей области</li>
+                <li class="warning"><div class="css">CSS</div></li>
+                <li class="success"><div class="css">CSS</div>Создать класс success</li>
+                <li class="success"><div class="html">HTML</div>Добавить логотип</li>
+            </ul>
+        </div>
+        <h2><div class="arrow">JS</div></h2>
+        <ul>
+            <li class="success"><div class="js">JS</div>Сделать счетчик с 2 кнопками (+ -) и числом count</li>
+            <li class="success"><div class="js">JS</div>Сделать alert при клике на hw-1 в хедере</li>
+            <li class="success"><div class="js">JS</div>Сделать alert при клике на ссылку меню</li>
+        </ul>    
+        <div>
+            <button id="minus-btn" class="btn btn-primary">-</button>
+            <span class="count">Счётчик: <span id="counter">0</span></span>
+            <button id="plus-btn" class="btn btn-primary">+</button>
+        </div>
+    </div>
+</div>
+
+<script src="./files/bootstrap.min.js"></script>
+    <script src="./files/script.js"></script>
+</body>
+</html>
