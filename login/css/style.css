@@ -262,7 +262,7 @@ footer a {
 
 .signpass-icon{
 	position: absolute;
-	top: 52.5%;
+	top: 51.5%;
 	right: 15%;
 	cursor: pointer;
 }
@@ -280,6 +280,8 @@ footer a {
 
 .show {
 	visibility: visible;
+	background-color: #f8d7da;
+	border-color: #f5c6cb;
 }
 
 ::-ms-reveal {
