@@ -281,3 +281,7 @@ footer a {
 .show {
 	visibility: visible;
 }
+
+::-ms-reveal {
+	display: none;
+}
