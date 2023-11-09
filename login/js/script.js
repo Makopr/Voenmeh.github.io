@@ -28,9 +28,15 @@ document.getElementById("sign-button").addEventListener("click", function () {
     } else if (password.trim() === "") {
 		regText.setAttribute("class", "show");
 		regText.textContent = "Напишите пароль.";
-    } else if (!(EnUp || RuUp) || !nums || password.length < 7 || password.length > 20) {
+    } else if (password.length < 7 || password.length > 20) {
 		regText.setAttribute("class", "show");
-		regText.textContent = "Напишите пароль из 7 символов";
+		regText.textContent = "Напишите пароль из >7 символов";
+    } else if (!(EnUp || RuUp)) {
+		regText.setAttribute("class", "show");
+		regText.textContent = "Пароль без заглавных букв";
+    } else if (!nums) {
+		regText.setAttribute("class", "show");
+		regText.textContent = "Напишите пароль с цифрами";
     } else {
         const registeredUsers = JSON.parse(localStorage.getItem("registeredUsers")) || [];
         const userExists = registeredUsers.some(user => user.email === email && user.password === password);
@@ -39,7 +45,7 @@ document.getElementById("sign-button").addEventListener("click", function () {
             location.href = "html/main.html";
         } else {
 			regText.setAttribute("class", "show");
-			regText.textContent = "Данный пользователь не зарегистрирован.";
+			regText.textContent = "Пользователя нет.";
         }
 	}
 });
@@ -56,7 +62,7 @@ document.getElementById("register-button").addEventListener("click", function ()
 
     if (username.trim() === "" && (email.trim() === "" || !email.includes("@")) && password.trim() === "") {
 		regText.setAttribute("class", "show");
-		regText.textContent = "Напишите логин, почту и пароль.";
+		regText.textContent = "Нет логина, почты и пароля.";
     } else if (username.trim() === "" && (email.trim() === "" || !email.includes("@") || email.length < 6)){
 		regText.setAttribute("class", "show");
 		regText.textContent = "Напишите логин и пароль.";
@@ -74,18 +80,23 @@ document.getElementById("register-button").addEventListener("click", function ()
 		regText.textContent = "Напишите логин.";
     } else if (password.trim() === "") {
 		regText.setAttribute("class", "show");
-
 		regText.textContent = "Напишите пароль.";
-    } else if (!(EnUp || RuUp) || !nums || password.length < 7 || password.length > 20) {
+    } else if (password.length < 7 || password.length > 20) {
 		regText.setAttribute("class", "show");
-		regText.textContent = "Напишите пароль из 7 символов";
+		regText.textContent = "Пароль из <7 символов";
+    } else if (!(EnUp || RuUp)) {
+		regText.setAttribute("class", "show");
+		regText.textContent = "Пароль без заглавных букв";
+    } else if (!nums) {
+		regText.setAttribute("class", "show");
+		regText.textContent = "Пароль без цифр";
     } else {
 			const registeredUsers = JSON.parse(localStorage.getItem("registeredUsers")) || [];
 			const userExists = registeredUsers.some(user => user.email === email);
 			
 			if (userExists) {
 				regText.setAttribute("class", "show");
-				regText.textContent = "Данный пользователь уже зарегистрирован.";
+				regText.textContent = "Пользователь уже есть.";
 			} else {
 				registeredUsers.push({ username, email, password });
 				localStorage.setItem("registeredUsers", JSON.stringify(registeredUsers));
