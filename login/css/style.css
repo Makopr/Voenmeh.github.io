@@ -262,14 +262,22 @@ footer a {
 
 .signpass-icon{
 	position: absolute;
-	left: 20px;
-	top: 55%;
+	top: 52.5%;
+	right: 15%;
 	cursor: pointer;
 }
 
 .regpass-icon{
 	position: absolute;
-	right: 20px;
-	top: 63%;
+	top: 60.5%;
+	right: 15%;
 	cursor: pointer;
+}
+
+.hide {
+	visibility: hidden;
+}
+
+.show {
+	visibility: visible;
 }
