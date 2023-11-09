@@ -13,19 +13,24 @@ signInButton.addEventListener('click', () => {
 document.getElementById("sign-button").addEventListener("click", function () {
 	const email = document.getElementById("SignEmail").value;
     const password = document.getElementById("SignPassword").value;
+	const regText = document.getElementById("signText");
 
 	var EnUp = /[A-Z]/.test(password);
     var nums = /\d/.test(password);
     var RuUp = /[А-Я]/.test(password);
 
     if (email.trim() === "" && password.trim() === "") {
-		alert("Напишите почту и пароль.");
+		regText.setAttribute("class", "show");
+		regText.textContent = "Напишите почту и пароль.";
     } else if (email.trim() === "" || !email.includes("@") || email.length < 6) {
-        alert("Напишите почту.");
+		regText.setAttribute("class", "show");
+		regText.textContent = "Напишите почту.";
     } else if (password.trim() === "") {
-        alert("Напишите пароль.");
+		regText.setAttribute("class", "show");
+		regText.textContent = "Напишите пароль.";
     } else if (!(EnUp || RuUp) || !nums || password.length < 7 || password.length > 20) {
-        alert("Напиишите пароль, где больше 7 символов, с заглавными буквами и цифрами.");
+		regText.setAttribute("class", "show");
+		regText.textContent = "Напишите пароль из 7 символов";
     } else {
         const registeredUsers = JSON.parse(localStorage.getItem("registeredUsers")) || [];
         const userExists = registeredUsers.some(user => user.email === email && user.password === password);
@@ -33,7 +38,8 @@ document.getElementById("sign-button").addEventListener("click", function () {
         if (userExists) {
             location.href = "html/main.html";
         } else {
-			alert("Данный пользователь не зарегистрирован");
+			regText.setAttribute("class", "show");
+			regText.textContent = "Данный пользователь не зарегистрирован.";
         }
 	}
 });
@@ -43,35 +49,43 @@ document.getElementById("register-button").addEventListener("click", function ()
 	const email = document.getElementById("RegEmail").value;
     const password = document.getElementById("RegPassword").value;
 	const regText = document.getElementById("regText");
-	regText.setAttribute("class", "hide");
-	
 	
 	var EnUp = /[A-Z]/.test(password);
     var nums = /\d/.test(password);
     var RuUp = /[А-Я]/.test(password);
 
     if (username.trim() === "" && (email.trim() === "" || !email.includes("@")) && password.trim() === "") {
-		alert("Напишите логин, почту и пароль.");
+		regText.setAttribute("class", "show");
+		regText.textContent = "Напишите логин, почту и пароль.";
     } else if (username.trim() === "" && (email.trim() === "" || !email.includes("@") || email.length < 6)){
-		alert("Напишите логин и почту.");
+		regText.setAttribute("class", "show");
+		regText.textContent = "Напишите логин и пароль.";
 	} else if ((email.trim()  === "" || !email.includes("@") || email.length < 6) && password.trim() === ""){
-		alert("Напишите почту и пароль.");
+		regText.setAttribute("class", "show");
+		regText.textContent = "Напишите почту и пароль.";
 	} else if (username.trim() === "" && password.trim() === ""){
-		alert("Напишите логин и пароль.");
+		regText.setAttribute("class", "show");
+		regText.textContent = "Напишите логин и пароль.";
 	} else if(email.trim() === "" || !email.includes("@") || email.length < 6){
-		alert("Напишите почту.");
+		regText.setAttribute("class", "show");
+		regText.textContent = "Напишите почту.";
 	} else if (username.trim() === "") {
-        alert("Напишите логин.");
+		regText.setAttribute("class", "show");
+		regText.textContent = "Напишите логин.";
     } else if (password.trim() === "") {
-        alert("Напишите пароль.");
+		regText.setAttribute("class", "show");
+
+		regText.textContent = "Напишите пароль.";
     } else if (!(EnUp || RuUp) || !nums || password.length < 7 || password.length > 20) {
-        alert("Напишите пароль, где больше 7 символов, с заглавными буквами и цифрами.");
+		regText.setAttribute("class", "show");
+		regText.textContent = "Напишите пароль из 7 символов";
     } else {
 			const registeredUsers = JSON.parse(localStorage.getItem("registeredUsers")) || [];
 			const userExists = registeredUsers.some(user => user.email === email);
 			
 			if (userExists) {
-				alert("Данный пользователь уже зарегистрирован.");
+				regText.setAttribute("class", "show");
+				regText.textContent = "Данный пользователь уже зарегистрирован.";
 			} else {
 				registeredUsers.push({ username, email, password });
 				localStorage.setItem("registeredUsers", JSON.stringify(registeredUsers));
