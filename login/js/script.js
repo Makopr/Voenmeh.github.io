@@ -27,7 +27,14 @@ document.getElementById("sign-button").addEventListener("click", function () {
     } else if (!(EnUp || RuUp) || !nums || password.length < 7 || password.length > 20) {
         alert("Напиишите пароль, где больше 7 символов, с заглавными буквами и цифрами.");
     } else {
-		location.href = "html/main.html";
+        const registeredUsers = JSON.parse(localStorage.getItem("registeredUsers")) || [];
+        const userExists = registeredUsers.some(user => user.email === email && user.password === password);
+
+        if (userExists) {
+            location.href = "html/main.html";
+        } else {
+			alert("Данный пользователь не зарегистрирован");
+        }
 	}
 });
 
@@ -35,6 +42,9 @@ document.getElementById("register-button").addEventListener("click", function ()
 	const username = document.getElementById("RegUsername").value;
 	const email = document.getElementById("RegEmail").value;
     const password = document.getElementById("RegPassword").value;
+	const regText = document.getElementById("regText");
+	regText.setAttribute("class", "hide");
+	
 	
 	var EnUp = /[A-Z]/.test(password);
     var nums = /\d/.test(password);
@@ -57,7 +67,22 @@ document.getElementById("register-button").addEventListener("click", function ()
     } else if (!(EnUp || RuUp) || !nums || password.length < 7 || password.length > 20) {
         alert("Напишите пароль, где больше 7 символов, с заглавными буквами и цифрами.");
     } else {
-		location.href = "html/main.html";
+			const registeredUsers = JSON.parse(localStorage.getItem("registeredUsers")) || [];
+			const userExists = registeredUsers.some(user => user.email === email);
+			
+			if (userExists) {
+				alert("Данный пользователь уже зарегистрирован.");
+			} else {
+				registeredUsers.push({ username, email, password });
+				localStorage.setItem("registeredUsers", JSON.stringify(registeredUsers));
+	
+				localStorage.setItem("loggedIn", "true");
+				localStorage.setItem("username", username);
+				localStorage.setItem("email", email);
+				localStorage.setItem("password", password);
+				
+				regText.setAttribute("class", "show");
+			}
     }
 });
 
