@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Makopr market</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<h1>Максмаркет</h1>
+
+<button onclick="showAddOrderForm()">Добавить заказ</button>
+<button onclick="showHistory()">История заказов</button>
+
+<input type="text" id="searchInput" placeholder="Поиск" oninput="searchOrders()">
+
+<table id="ordersTable">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Заказ</th>
+      <th>Сумма</th>
+      <th>Клиент</th>
+      <th>Время</th>
+      <th>Комментарий</th>
+      <th>Действия</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+<table id="historyTable" style="display: none;">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Заказ</th>
+      <th>Сумма</th>
+      <th>Клиент</th>
+      <th>Время</th>
+      <th>Комментарий</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+<div id="addOrderForm" style="display: none;">
+  <h2>Добавить заказ</h2>
+  <form onsubmit="addOrder(); return false;">
+    <label for="orderName">Заказ:</label>
+    <input type="text" id="orderName">
+    <span class="error-message" id="orderNameError"></span>
+    <br>
+    <label for="amount">Сумма:</label>
+    <input type="text" id="amount">
+    <span class="error-message" id="amountError"></span>
+    <br>
+    <label for="client">Клиент:</label>
+    <input type="text" id="client">
+    <span class="error-message" id="clientError"></span>
+    <br>
+    <label for="time">Время:</label>
+    <input type="text" id="time">
+    <span class="error-message" id="timeError"></span>
+    <br>
+    <label for="comment">Комментарий:</label>
+    <input type="text" id="comment">
+    <br>
+    <button type="submit">Сохранить</button>
+  </form>
+</div>
+
+<div id="editForm" class="edit-form">
+  <h2>Изменить заказ</h2>
+  <form onsubmit="Save(); return false;">
+    <label for="editCardNumber">Номер карты:</label>
+    <input type="text" id="editCardNumber">
+    <span class="error-message" id="editCardNumberError"></span>
+    <br>
+    <label for="editOrderName">Заказ:</label>
+    <input type="text" id="editOrderName">
+    <span class="error-message" id="editOrderNameError"></span>
+    <br>
+    <label for="editAmount">Сумма:</label>
+    <input type="text" id="editAmount">
+    <span class="error-message" id="editAmountError"></span>
+    <br>
+    <label for="editClient">Клиент:</label>
+    <input type="text" id="editClient">
+    <span class="error-message" id="editClientError"></span>
+    <br>
+    <label for="editTime">Время:</label>
+    <input type="text" id="editTime">
+    <span class="error-message" id="editTimeError"></span>
+    <br>
+    <label for="editComment">Комментарий:</label>
+    <input type="text" id="editComment">
+    <br>
+    <button type="submit">Сохранить</button>
+  </form>
+</div>
+
+<script src="js/orders.js"></script>
+
+</body>
+</html>

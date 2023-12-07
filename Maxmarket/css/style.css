@@ -1,0 +1,50 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #797979;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #c8c5c5;
+}
+
+button {
+  margin-top: 10px;
+  padding: 8px;
+  border-radius: 10%;
+  cursor: pointer;
+}
+
+input[type="text"] {
+  padding: 5px;
+}
+
+.edit-form {
+  display: none;
+}
+
+.error-message {
+  color: red;
+}
+
+.background {
+  background-color: aqua;
+}
+
+.font {
+  color: greenyellow;
+}
+
+.big {
+  font: bolder;
+}
