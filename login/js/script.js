@@ -44,10 +44,13 @@ document.getElementById("sign-button").addEventListener("click", function () {
         if (userExists) {
             location.href = "html/main.html";
         } else {
-			regText.setAttribute("class", "show");
-			regText.textContent = "Пользователя нет.";
+	     regText.setAttribute("class", "show");
+	     regText.textContent = "Пользователя нет.";
         }
-	}
+     }
+	setTimeout(() => {
+		regText.setAttribute("class", "hide");
+	}, 1000);
 });
 
 document.getElementById("register-button").addEventListener("click", function () {
